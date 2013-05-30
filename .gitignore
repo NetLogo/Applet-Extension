@@ -1,0 +1,7 @@
+*.jar.pack.gz
+*.jar
+/classes
+/project/target
+/target
+.DS_Store
+applet.zip
