@@ -4,9 +4,6 @@ import
   java.awt.Component
 
 import
-  javax.swing.SwingUtilities
-
-import
   org.nlogo.{ api, lite, nvm, window },
     api.{ Context, ExtensionException, Primitive },
     lite.Applet,
@@ -48,12 +45,21 @@ trait AppletPrimitive {
   }
 
   protected def extractApplet(component: Component) : Applet = {
-    SwingUtilities.getRoot(component) match {
-      case applet: Applet =>
-        applet
-      case _ =>
-        throw new ExtensionException("Bad parent component found; the Applet extension can only be used from within applets!")
+
+    @scala.annotation.tailrec
+    def checkAncestors(comp: Component) : Applet = {
+      comp.getParent match {
+        case applet: Applet =>
+          applet
+        case null =>
+          throw new ExtensionException("No applet interface component found; the Applet extension can only be used from within applets!")
+        case parent =>
+          checkAncestors(parent)
+      }
     }
+
+    checkAncestors(component)
+
   }
 
 }
