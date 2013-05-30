@@ -10,12 +10,11 @@ applet:get "bippy"
 
 ## Building
 
-Use the NETLOGO environment variable to tell the Makefile which NetLogoLite.jar to compile against.  For example:
+To build, make sure you have [sbt](http://www.scala-sbt.org) installed, then run:
 
-    NETLOGO=/Applications/NetLogo\\\ 5.0
-    make
+    sbt package
 
-If compilation succeeds, `applet.jar` will be created.
+If compilation succeeds, `applet.zip` will be created.
 
 ## Terms of Use
 
