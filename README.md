@@ -8,6 +8,8 @@ Currently, the only existing primitive is `get`, which is demonstrated as follow
 applet:get "bippy"
 ```
 
+Note that using applets at all is deprecated; [details here](https://github.com/NetLogo/NetLogo/wiki/Applets).
+
 ## Building
 
 To build, make sure you have [sbt](http://www.scala-sbt.org) installed, then run:
